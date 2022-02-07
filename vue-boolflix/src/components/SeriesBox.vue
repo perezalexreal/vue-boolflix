@@ -1,16 +1,13 @@
 <template>
 <div >
-     <h1> Film </h1>
+     <h1> Series TV </h1>
      <div class="container">
-             <div class="box-film" v-for="(film,index) in listFilm" :key="index">
-        <img :src="firstPath+film.poster_path" alt="">
-        <h1 class="title">{{ film.original_title }}</h1>
-        <h3 class="original-title"> {{ film.title }}</h3>
-                             <span>Lingua:</span>
-                        <div class="flag-container">
-                            <img :src="`../flags/${film.original_language}.png`">
-                        </div>
-        <p class="vote">{{ film.vote_average }}</p>
+             <div class="box-serie" v-for="(serie,index) in listSerie" :key="index">
+        <img :src="firstPath+serie.poster_path" alt="">
+        <h1 class="title">{{ serie.original_name}}</h1>
+        <h3 class="original-title"> {{ serie.name }}</h3>
+        <p class="language">{{ serie.original_language}} </p>
+        <p class="vote">{{ serie.vote_average }}</p>
     </div>
      </div>
 
@@ -20,13 +17,13 @@
 
 <script>
 export default {
-        data () {
+    data () {
         return {
             firstPath: 'https://image.tmdb.org/t/p/w500'
         }
     },
     props: {
-       listFilm: Array
+       listSerie: Array
     }
 }
 </script>
@@ -45,13 +42,12 @@ text-align: center;
     justify-content: space-around;
     flex-wrap: wrap;
     width: 1200px;
-
+     
     img {
         width: 200px;
-        max-width: 300px
     }
 }
-.box-film {
+.box-serie {
     display: flex;
     justify-content: center;
     align-items: center;

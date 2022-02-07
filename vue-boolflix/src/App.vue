@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-<header-box @search="searchMovies" />
-<main-container :filmList="filmLists"/>
+<header-box @search="searchInput" />
+<main-container :filmList="filmLists" :serieList="serieLists"/>
   </div>
 </template>
 
@@ -18,13 +18,21 @@ export default {
   },
   data () {
     return {
+      firstPath: 'https://image.tmdb.org/t/p/w500',
       filmLists : [],
-      seriesList : []
+      serieLists : []
     }
   },
   methods: {
      searchMovies(titleInput){
-        this.filmLists = this.callApi(titleInput, 'movie') 
+       this.callApi(titleInput, 'movie') 
+    },
+     searchSeries(titleInput){
+        this.callApi(titleInput, 'tv') 
+    },
+    searchInput(titleInput){
+      this.searchMovies(titleInput);
+      this.searchSeries(titleInput);
     },
     callApi(titleInput, type) {
       let params = {
@@ -34,7 +42,11 @@ export default {
 
        axios.get(`https://api.themoviedb.org/3/search/${type}`, { params }
       ).then(( result ) => {
-        this.filmLists = result.data.results;
+       if(type == 'tv'){
+          this.serieLists = result.data.results;
+       } else {
+          this.filmLists = result.data.results;
+       }
       })
     }
   }

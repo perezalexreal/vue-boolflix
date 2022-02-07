@@ -1,20 +1,23 @@
 <template>
     <div class="main-container">
         <film-box :listFilm="filmList" />
+        <series-box :listSerie="serieList"/>
     </div>
 </template>
 
 
 <script>
 import FilmBox from './FilmBox.vue'
-
+import SeriesBox from './SeriesBox.vue'
 
 export default {
     components: {
-        FilmBox
+        FilmBox,
+        SeriesBox
     },
     props: {
-         filmList : Array
+         filmList : Array,
+         serieList: Array
     }
 }
 </script>
