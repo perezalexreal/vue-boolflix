@@ -59,6 +59,6 @@ export default {
   margin: 0;
   box-sizing: border-box;
 }
-
+ @import '/scss/main.scss'
 
 </style>
