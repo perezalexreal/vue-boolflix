@@ -1,17 +1,6 @@
 <template>
     <div class="main-container">
-        <film-box />
-        <film-box />
-        <film-box />
-        <film-box />
-        <film-box />
-        <film-box />
-        <film-box />
-        <film-box />
-        <film-box />
-        <film-box />
-        <film-box />
-        <film-box />
+        <film-box :listFilm="filmList" />
     </div>
 </template>
 
@@ -23,6 +12,9 @@ import FilmBox from './FilmBox.vue'
 export default {
     components: {
         FilmBox
+    },
+    props: {
+         filmList : Array
     }
 }
 </script>

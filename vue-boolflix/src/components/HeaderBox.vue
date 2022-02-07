@@ -4,8 +4,8 @@
             Logo
         </div>
         <div class="buttons">
-            <input  class="search-input" type="text" name="" id="">
-            <button class="search-button"> Cerca</button>
+            <input  class="search-input" type="text" name="" id="" v-model="inputModel">
+            <button class="search-button" @click="$emit('search', inputModel)"> Cerca</button>
         </div>
     </div>
 </template>
@@ -13,7 +13,11 @@
 
 <script>
 export default {
-    
+    data() {
+        return {
+            inputModel : ''
+        }
+    },
 }
 </script>
 
